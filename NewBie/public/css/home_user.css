@@ -12,10 +12,13 @@
     background: rgba(100, 100, 100, 0.5);
 }
 
+.nav-item .nav-link{
+    display: block;
+}
 .nav-item:hover{
     transition: 0.3s    ;
     background: #38383888;
-    border-radius: 12px;
+    /* border-radius: 12px; */
 }
 
 

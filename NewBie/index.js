@@ -5,6 +5,7 @@ const CONFIG =require('./config.js');
 const home = require('./routes/home.js')
 const product = require('./routes/product.js')
 const account = require('./routes/account.js')
+const brand = require('./routes/brands.js')
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
@@ -21,6 +22,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use('/', home)
 app.use('/product', product)
 app.use('/account', account)
+app.use('/brand', brand)
 
 
 
