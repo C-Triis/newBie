@@ -8,7 +8,8 @@ const Product = mongoose.Schema(
         img_prod: { type:String },
         price_prod: { type: String },
         percent_prod: { type: String},
-        des_prod: { type: String }
+        des_prod: { type: String },
+        brandName: {type: String }
     },
     {versionKey: false, timestamps: true}
 );

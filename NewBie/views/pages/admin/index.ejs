@@ -23,6 +23,7 @@
                                         <tr>
                                             <th scope="col">STT</th>
                                             <th scope="col">Tên sản phẩm</th>
+                                            <th scope="col">Hãng</th>
                                             <th scope="col">Ảnh sản phẩm</th>
                                             <th scope="col">Giảm</th>
                                             <th scope="col">Giá</th>
@@ -37,6 +38,9 @@
                                                 </th>
                                                 <td class="align-middle">
                                                     <%= product.name_prod %>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <%= product.brandName %>
                                                 </td>
                                                 <td class="align-middle">
                                                     <img src="<%= product.img_prod %>" alt="" class="img_sp">
@@ -170,6 +174,11 @@
                                         <input type="text" class="form-control ps-3" id="name_prod" name="name_prod"
                                             placeholder="Nhập tên sản phẩm">
                                     </div>
+                                    <div class="col-6">
+                                        <label for="name_prod" class="form-label">Tên hãng</label>
+                                        <input type="text" class="form-control ps-3" id="brandName" name="brandName"
+                                            placeholder="Nhập tên hãng">
+                                    </div>
                                     <div class="col-6 row mt-3">
                                         <div class="col-md-6">
                                             <label for="price_prod" class="form-label">Giá sản phẩm</label>
@@ -219,9 +228,14 @@
                                                     <input type="hidden" class="form-control" name="img_prod" id="oldImg" value='${productInfo.img_prod}'>
                                         </div>
                                         <div class="col-md-6 mt-4">
-                                        <label for="name_prod" class="form-label">Name</label>
+                                        <label for="name_prod" class="form-label">Tên sản phẩm</label>
                                         <input type="text" class="form-control ps-3" id="name_prod" name="name_prod" placeholder="Nhập tên"
                                             value="${productInfo.name_prod}">
+                                        </div>
+                                        <div class="col-md-6 mt-4">
+                                        <label for="brandName" class="form-label">Tên hãng</label>
+                                        <input type="text" class="form-control ps-3" id="brandName" name="brandName" placeholder="Nhập tên"
+                                            value="${productInfo.brandName}">
                                         </div>
                                         <div class="col-md-6 mt-4 row">
                                            <div class="col-md-6">
