@@ -432,7 +432,30 @@
     overflow: hidden;
 }
 
+.brand{
+    display: inline-block;
+    margin-top: 24px ;
+    overflow: hidden;
+}
+
 .product:hover .img_hover{
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -khtml-opacity: 1;
+    -webkit-transition: all 800ms ease 0s;
+    -moz-transition: all 800ms ease 0s;
+    -o-transition: all 800ms ease 0s;
+    transition: all 800ms ease 0s;
+	filter: alpha(opacity=100);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+}
+
+.brann:hover .img_hover{
     opacity: 1;
     -webkit-opacity: 1;
     -moz-opacity: 1;
@@ -567,4 +590,104 @@
 
 .info .info_list .info_item{
     padding: 4px 0;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.footer{
+    background-color: #000;
+    height:300px;
+    width:100%;display:inline-block;
+}
+
+.row2{
+    float: left;
+    width: 25%;
+}
+.row2 li{
+    display: inline-block;
+}
+.footer-col{
+    width:25%;
+    padding: 0 15px;
+}
+.footer-col h4{
+    font-size: 22px;
+    color: aqua;
+    width:190px;
+    text-transform: capitalize;
+    margin-bottom: 35px;
+    font-weight: 500;
+    position:relative;
+}
+.footer-col h4::before{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-10px;
+    background-color: #e91e63;
+    height:2px;
+    box-sizing: border-box;
+    width:50px;
+}
+.footer-col ul li a{
+    text-decoration: none;
+    text-decoration: capitalize;
+    color:#fff;
+    font-size: 18px;
+    width:170px;
+    font-weight: 300;
+    color:#bbbbbb;
+    display:block;
+    padding: 5px 0;
+    transition: 0.3s;
+}
+.footer-col ul li a:hover{
+    color: #fff;
+    padding-left: 13px;
+}
+.footer-col ul .ul{
+    padding-left: 2rem;
+}
+.footer-col .icon-links a{
+    display:inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #fff;
+    transition: 0.5s;
+    text-decoration: none;
+    padding: 5px;
+}
+.footer-col .icon-links a:hover{
+    color: #24262b;
+    background-color: #fff;
+}
+
+p{
+    margin-top: 7px;
+    color: #fff;
+    text-align: center;
+    font-size: 13px;
+}
+.footer-col .icon-links a i{
+    font-size: 22px;
+    transition: 0.3s;
+}
+.footer-col .icon-links a i:hover{
+    font-size: 26px;
+}
+.footer-col h3{
+    
+    margin-left: 60px;
+    
 }
