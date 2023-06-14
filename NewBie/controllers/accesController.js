@@ -1,28 +1,18 @@
 "use strict";
-
-const { error } = require('console');
-
-const Product = require('../models/product.js').Product
-const BrandController = require("../controllers/brandController.js")
-
-function ProductController() {
+const Acces = require('../models/acces.js').Acces
+function AccesController() {
     const SELF = {
-      SIZE: 8,
+      SIZE: 5,
     };
     return{
         getList: (page, keySearch) => {
           try {
             let skip = (parseInt(page) - 1) * SELF.SIZE;
             let regex = new RegExp(keySearch);
-            return Product.find()
+            return Acces.find()
               .skip(skip)
               .limit(SELF.SIZE)
-              .then(async (rs) => {
-                for(let i = 0, ii = rs.length; i < ii; i++) {
-                  let brandInfo = await BrandController.getBrandById(rs[i].brandName)
-                  rs[i].brandName = brandInfo.brandName
-                }
-                console.log(rs)
+              .then((rs) => {
                 return rs
               })
               .catch((error) => {
@@ -31,13 +21,13 @@ function ProductController() {
             console.log(error);
           }
           },
-          addProduct: (req, res) => {
+          addAcces: (req, res) => {
             try {
               let data = req.body;
               console.log(data);
-              return Product.create(data)
+              return Acces.create(data)
                 .then((rs) => {
-                  return res.redirect("/product/list");
+                  return res.redirect("/acces/list");
                 })
                 .catch((err) => {
                   res.send({ s: 400, msg: err });
@@ -49,7 +39,7 @@ function ProductController() {
           getListDB: () => {
             try {
               return new Promise((resolve, reject) => {
-                Product.find()
+                Acces.find()
                   .then((rs) => {
                     resolve(rs);
                   })
@@ -62,30 +52,30 @@ function ProductController() {
               console.log(error);
             }
           },
-          getProductDetail: async (req, res) => {
+          getAccesDetail: async (req, res) => {
             try {
-              let productId = req.params?.id;
-              let productInfo = await Product.findById(productId);
-              if (!productInfo) {
-                return res.json({ s: 404, msg: "Product not found" });
+              let accesId = req.params?.id;
+              let accesInfo = await Product.findById(accesId);
+              if (!accesInfo) {
+                return res.json({ s: 404, msg: "acces not found" });
               }
-              return res.json({ s: 200, data: productInfo });
+              return res.json({ s: 200, data: accesInfo });
             } catch (error) {
               console.log(error);
             }
           },
-          editProduct: async (req, res) => {
+          editAcces: async (req, res) => {
             try {
               let data = req.body;
-              let productInfo = await Product.findById(data?._id);
-              if (!productInfo) {
-                return res.json({ s: 404, msg: "Product not found" });
+              let accesInfo = await Acces.findById(data?._id);
+              if (!accesInfo) {
+                return res.json({ s: 404, msg: "acces not found" });
               }
               delete data._id;
-              return Product.findByIdAndUpdate(productInfo._id, data)
+              return Acces.findByIdAndUpdate(accesInfo._id, data)
                 .then((rs) => {
                   if (rs) {
-                    res.redirect("/product/list");
+                    res.redirect("/acces/list");
                   }
                 })
                 .catch((err) => {
@@ -95,23 +85,23 @@ function ProductController() {
               console.log(error);
             }
           },
-          DeleteProduct: async (req, res) => {
+          DeleteAcces: async (req, res) => {
             try {
               console.log("qưe");
-              const productId = req.params?.id;
-              console.log(productId);
-              const productInfo = await Product.findById(productId);
-              if (!productInfo) {
-                return res.json({ s: 404, msg: "Product not found" });
+              const accesId = req.params?.id;
+              console.log(accesId);
+              const accesInfo = await Acces.findById(accesId);
+              if (!accesInfo) {
+                return res.json({ s: 404, msg: "Acces not found" });
               }
-              Product.deleteOne({ _id: productId })
+              Acces.deleteOne({ _id: accesId })
                 .then((rs) => {
                   console.log(rs);
-                  return res.json({ s: 200, msg: "Delete product success!!" });
+                  return res.json({ s: 200, msg: "Delete Acces success!!" });
                 })
                 .catch((e) => {
-                  console.log(`DeleteProduct - fail: ${e}`);
-                  return rs.json({ s: 400, msg: "Delete product fail" });
+                  console.log(`DeleteAcces - fail: ${e}`);
+                  return rs.json({ s: 400, msg: "Delete Acces fail" });
                 });
             } catch (error) {
               console.log(error);
@@ -122,4 +112,4 @@ function ProductController() {
 }
 
 //xuất ProductController
-module.exports = new ProductController();
+module.exports = new AccesController();

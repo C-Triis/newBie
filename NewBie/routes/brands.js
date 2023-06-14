@@ -28,14 +28,10 @@ router.get("/list", (req, res) => {
 
 router.post("/add", BrandController.addBrand);
 router.get("/detail/:id", BrandController.getBrandDetail);
+router.get("/brand-list", BrandController.getListBrand);
 router.post("/upload-image", upload.single("file"), fileService.uploadFile);
 router.post("/edit", BrandController.editBrand);
-router.delete("/delete/:id", BrandController.DeleteBrand)
-
-// router.post("/add", BrandController.addBrand);
-// router.get("/detail/:id", BrandController.getBrandDetail);
-// router.post("/edit", BrandController.editBrand);
-// router.delete("/delete/:id", BrandController.DeleteBrand)
+router.delete("/delete/:id", BrandController.DeleteBrand);
 
 
 module.exports = router;

@@ -40,7 +40,6 @@
     line-height: 46px;
     padding: 0 24px;
     display: block;
-    margin-right: 30px;
 }
 .navbar-nav .subnav li:hover a{
     color:#000;
@@ -58,7 +57,8 @@
     left:0;
     background-color: #ccc;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
-}.navbar-nav .subnav a{
+}
+.navbar-nav .subnav a{
     color:#000;
     padding: 0 12px;
     line-height: 38px;
