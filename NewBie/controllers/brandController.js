@@ -27,7 +27,7 @@ function BrandController() {
               console.log(data);
               return Brand.create(data)
                 .then((rs) => {
-                  return res.redirect("/product/list");
+                  return res.redirect("/brand/list");
                 })
                 .catch((err) => {
                   res.send({ s: 400, msg: err });

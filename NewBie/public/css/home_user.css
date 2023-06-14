@@ -21,6 +21,51 @@
     /* border-radius: 12px; */
 }
 
+.navbar-nav, .subnav{
+    list-style: none;
+}
+.navbar-nav > li{
+    display: inline-block;
+
+}
+.navbar-nav li{
+    position: relative;
+}
+.navbar-nav > li > a{
+    color: #ccc;
+    text-transform: uppercase;
+}
+.navbar-nav li a{
+    text-decoration: none;
+    line-height: 46px;
+    padding: 0 24px;
+    display: block;
+    margin-right: 30px;
+}
+.navbar-nav .subnav li:hover a{
+    color:#000;
+    background-color: #38383888;
+    
+}
+.navbar-nav li:hover .subnav{
+    display:block;
+}
+.navbar-nav .subnav{
+    display: none;
+    min-width: 160px;
+    position: absolute;
+    top:100%;
+    left:0;
+    background-color: #ccc;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}.navbar-nav .subnav a{
+    color:#000;
+    padding: 0 12px;
+    line-height: 38px;
+}
+.navbar-nav .nav-arrow-down{
+    font-size: 14px;
+}
 
 /* ship-onl-back */
 .box_support{

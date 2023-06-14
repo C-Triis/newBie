@@ -6,7 +6,7 @@ const Product = require('../models/product.js').Product
 
 function ProductController() {
     const SELF = {
-      SIZE: 8,
+      SIZE: 10,
     };
     return{
         getList: (page, keySearch) => {
