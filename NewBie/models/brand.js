@@ -4,10 +4,10 @@ const mongoose = require('mongoose');
 //khai báo Collection 
 const Brand = mongoose.Schema(
     {
-        brandName: { type: String },
-        img_prod: { type:String },
-        des_brand: { type: String },
-        name_prod:{type: String}
+        brandId: { type: Number },
+        img_brand: { type:String },
+        des_brand: { type:String},
+        brandName: { type:String},
     },
     {versionKey: false, timestamps: true}
 );

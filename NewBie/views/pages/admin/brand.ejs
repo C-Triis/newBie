@@ -9,7 +9,7 @@
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 tm-block-col">
                         <div class="tm-bg-primary-dark tm-block tm-block-products">
                             <div class="d-flex justify-content-between ">
-                                <h1>Danh sách sản phẩm</h1>
+                                <h1>Danh sách Hãng</h1>
                                 <div class=" d-flex search">
                                     <form action="">
                                         <input type="search" name="search" id="search" placeholder="Search">
@@ -22,49 +22,42 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">STT</th>
-                                            <th scope="col">Tên sản phẩm</th>
-                                            <th scope="col" >Hãng</th>
-                                            <th scope="col">Ảnh sản phẩm</th>
-                                            <th scope="col">Giảm</th>
-                                            <th scope="col">Giá</th>
+                                            <!-- <th scope="col">Tên sản phẩm</th> -->
+                                            <th scope="col">Hãng</th>
+                                            <th scope="col">Ảnh hãng</th>
                                             <th scope="col" colspan="2" class="text-center">Chức năng</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <% product.forEach(function(product, index) { %>
+                                        <% brand.forEach(function(brand, index) { %>
                                             <tr>
                                                 <th scope="row" class="align-middle">
                                                     <%= index+1 %>
                                                 </th>
+                                                <!-- <td class="align-middle">
+                                                    <%= brand.name_prod %>
+                                                </td> -->
                                                 <td class="align-middle">
-                                                    <%= product.name_prod %>
+                                                    <%= brand.brandId %>
                                                 </td>
                                                 <td class="align-middle">
-                                                    <%= product.brandName %>
-                                                </td>
-                                                <td class="align-middle">
-                                                    <img src="<%= product.img_prod %>" alt="" class="img_sp">
-                                                </td>
-                                                <td class="align-middle">
-                                                    <%= product.percent_prod %>
-                                                </td>
-                                                <td class="align-middle">
-                                                    <%= product.price_prod %>
+                                                    <img src="<%= brand.img_brand %>" alt="" class="img_sp">
                                                 </td>
                                                 <td class="text-center align-middle">
-                                                    <span onclick='editItem("<%= product._id %>")' class="icon-cn"
+                                                    <span onclick='editItem("<%= brand._id %>")' class="icon-cn"
                                                         data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    </span>
                                                         <i class="fa-regular fa-pen-to-square"></i>
                                                     </span>
                                                 </td>
                                                 <td class="text-center align-middle">
                                                     <span class="icon-cn" data-bs-toggle="modal"
-                                                        data-bs-target="#staticBackdrop<%= product._id %>">
+                                                        data-bs-target="#staticBackdrop<%= brand._id %>">
                                                         <i class="fa-solid fa-trash"></i>
                                                     </span>
                                                 </td>
                                             </tr>
-                                            <div class="modal fade" id="staticBackdrop<%= product._id %>" tabindex="-1"
+                                            <div class="modal fade" id="staticBackdrop<%= brand._id %>" tabindex="-1"
                                                 aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -76,11 +69,11 @@
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <p>Bạn có chắc xóa <%= product.name_prod %>
+                                                            <p>Bạn có chắc xóa <%= brand.brandId %>
                                                             </p>
                                                         </div>
                                                         <div class="col-12 modal-footer">
-                                                            <button onclick='deleteItem("<%= product._id %>")'
+                                                            <button onclick='deleteItem("<%= brand._id %>")'
                                                                 class="btn btn-danger gap-2 col-3"
                                                                 data-bs-toggle="modal">Xóa</button>
                                                             <button class="btn btn-secondary gap-2 col-3"
@@ -97,7 +90,7 @@
                                 <ul class="pagination nav-add ">
                                     <li>
                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#addProduct">
+                                            data-bs-target="#addBrand">
                                             Thêm sản phẩm mới
                                         </button>
                                     </li>
@@ -109,7 +102,7 @@
                                         </li>
                                         <% for(var i=1; i <=3; i++) { %>
                                             <li class="page-item">
-                                                <a class="page-link" href="/product/list?page=<%= i %>">
+                                                <a class="page-link" href="/brand/list?page=<%= i %>">
                                                     <%= i %>
                                                 </a>
                                             </li>
@@ -149,7 +142,7 @@
                     </div>
                 </div>
                 <!-- modal add Product -->
-                <div class="modal fade" id="addProduct" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="addBrand" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -164,42 +157,19 @@
                                     <button type="button" value="Upload File" name="submit" class="btn btn-primary"
                                         id="btnUploadImg">Upload</button>
                                 </form>
-                                <form class="row g-3" action="/product/add" method="post">
+                                <form class="row g-3" action="/brand/add" method="post">
                                     <div class="col-6">
                                         <img id="imgAdd" height="100px" width="100px" />
-                                        <input type="hidden" class="form-control" name="img_prod" id="img_prod">
+                                        <input type="hidden" class="form-control" name="img_brand" id="img_brand">
                                     </div>
                                     <div class="col-6">
-                                        <label for="name_prod" class="form-label">Tên sản phẩm</label>
-                                        <input type="text" class="form-control ps-3" id="name_prod" name="name_prod"
-                                            placeholder="Nhập tên sản phẩm">
-                                    </div>
-                                    <div class="col-6">
-                                        <label for="brandName" class="form-label">Tên hãng</label>
-                                        <!-- <input type="text" class="form-control ps-3" id="brandName" name="brandName"
-                                            placeholder="Chọn tên hãng"> -->
-                                            <select class="form-control" name="brandName" id="brandName">
-                                                <option value="">Chọn tên hãng</option>
-                                                <option value="Nike">Nike</option>
-                                                <option value="C">Converse</option>
-                                                <option value="Gucci">Gucci</option>
-                                              </select>
-                                    </div>
-                                    <div class="col-6 row mt-3">
-                                        <div class="col-md-6">
-                                            <label for="price_prod" class="form-label">Giá sản phẩm</label>
-                                            <input type="text" class="form-control ps-3" id="price_prod"
-                                                name="price_prod" placeholder="Nhập giá sản phẩm">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="percent_prod" class="form-label">Giảm</label>
-                                            <input type="text" class="form-control ps-3" id="percent_prod"
-                                                name="percent_prod" placeholder="Nhập giá sản phẩm">
-                                        </div>
+                                        <label for="name_brand" class="form-label">Tên hãng</label>
+                                        <input type="text" class="form-control ps-3" id="brandName" name="brandName"
+                                            placeholder="Nhập tên hãng">
                                     </div>
                                     <div class="col-6 ms-4">
-                                            <label for="des_prod" class="form-label">Mô tả sản phẩm</label>
-                                            <textarea type="text" class="form-control" id="des_prod" name="des_prod"
+                                            <label for="des_brand" class="form-label">Mô tả sản phẩm</label>
+                                            <textarea type="text" class="form-control" id="des_brand" name="des_brand"
                                                 placeholder="Thông tin sản phẩm"></textarea>
                                     </div>
                                     <div class="modal-footer">
@@ -216,48 +186,48 @@
             <script>
 
                 // edit Item Product
-                function editItem(productId) {
+                function editItem(brandId) {
                     $.ajax({
                         type: "GET",
-                        url: `/product/detail/${productId}`,
+                        url: `/brand/detail/${brandId}`,
                         success: function (rs) {
                             if (rs.s === 200) {
-                                let productInfo = rs.data;
+                                let brandInfo = rs.data;
                                 var formEdit = ` 
                     
-                                    <form class="row" action="/product/edit" method="post">
+                                    <form class="row" action="/brand/edit" method="post">
                                         <div>
-                                        <input type="text" class="form-control" id="_id" name="_id" value="${productInfo._id}" style="display:none">
+                                        <input type="text" class="form-control" id="_id" name="_id" value="${brandInfo._id}" style="display:none">
                                         </div>
                                         <div class="col-md-6">
-                                                    <img id="oldUrl" height="100px" width="100px" src="${productInfo.img_prod}" class="mt-2" />
-                                                    <input type="hidden" class="form-control" name="img_prod" id="oldImg" value='${productInfo.img_prod}'>
+                                                    <img id="oldUrl" height="100px" width="100px" src="${brandInfo.img_prod}" class="mt-2" />
+                                                    <input type="hidden" class="form-control" name="img_prod" id="oldImg" value='${brandInfo.img_prod}'>
                                         </div>
                                         <div class="col-md-6 mt-4">
                                         <label for="name_prod" class="form-label">Tên sản phẩm</label>
                                         <input type="text" class="form-control ps-3" id="name_prod" name="name_prod" placeholder="Nhập tên"
-                                            value="${productInfo.name_prod}">
+                                            value="${brandInfo.name_prod}">
                                         </div>
                                         <div class="col-md-6 mt-4">
                                         <label for="brandName" class="form-label">Tên hãng</label>
                                         <input type="text" class="form-control ps-3" id="brandName" name="brandName" placeholder="Nhập tên"
-                                            value="${productInfo.brandName}">
+                                            value="${brandInfo.brandName}">
                                         </div>
                                         <div class="col-md-6 mt-4 row">
                                            <div class="col-md-6">
                                             <label for="price_prod" class="form-label">Giá</label>
                                             <input type="text" class="form-control ps-3" id="price_prod" name="price_prod" placeholder="Nhập Giá"
-                                                value="${productInfo.price_prod}">
+                                                value="${brandInfo.price_prod}">
                                             </div>
                                             <div class="col-md-6">
                                             <label for="percent_prod" class="form-label">Giảm</label>
                                             <input type="text" class="form-control ps-3" id="percent_prod" name="percent_prod" placeholder="Nhập phần trăm giảm giá"
-                                                value="${productInfo.percent_prod}">
+                                                value="${brandInfo.percent_prod}">
                                             </div>
                                         </div>
                                         <div class="col-md-6 mt-4 ms-4">
                                         <label for="des_prod" class="form-label">Thông tin sản phẩm</label>
-                                        <textarea type="text" class="form-control" id="des_prod" name="des_prod" placeholder="Thông tin sản phẩm">${productInfo.des_prod}</textarea>
+                                        <textarea type="text" class="form-control" id="des_prod" name="des_prod" placeholder="Thông tin sản phẩm">${brandInfo.des_prod}</textarea>
                                         </div>
                                         <div class="modal-footer mt-4">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -273,58 +243,11 @@
                     });
                 }
 
-                //edit Item Brand
-                // function editItem(brandId) {
-                //     $.ajax({
-                //         type: "GET",
-                //         url: `/brand/detail/${brandId}`,
-                //         success: function (rs) {
-                //             console.log(brandId);
-                //             if (rs.s === 200) {
-                //                 let brandInfo = rs.data;
-                //                 var formEdit = ` 
-                    
-                //                     <form class="row" action="/brand/edit" method="post">
-                //                         <div>
-                //                         <input type="text" class="form-control" id="_id" name="_id" value="${brandInfo._id}" style="display:none">
-                //                         </div>
-                //                         <div class="col-md-6">
-                //                             <img id="oldUrl" height="100px" width="100px" src="${brandInfo.img_brand}" class="mt-2" />
-                //                             <input type="hidden" class="form-control" name="img_brand" id="oldImg" value='${brandInfo.img_brand}'>
-                //                         </div>
-                //                         <div class="col-md-6 mt-4">
-                //                         <label for="name_brand" class="form-label">Tên sản phẩm</label>
-                //                         <input type="text" class="form-control ps-3" id="name_brand" name="name_brand" placeholder="Nhập tên"
-                //                             value="${brandInfo.name_brand}">
-                //                         </div>
-                //                         <div class="col-md-6 mt-4">
-                //                         <label for="brandName" class="form-label">Tên hãng</label>
-                //                         <input type="text" class="form-control ps-3" id="brandName" name="brandName" placeholder="Nhập tên"
-                //                             value="${brandInfo.brandName}">
-                //                         </div>
-                //                         <div class="col-md-6 mt-4 ms-4">
-                //                         <label for="des_brand" class="form-label">Thông tin sản phẩm</label>
-                //                         <textarea type="text" class="form-control" id="des_brand" name="des_brand" placeholder="Thông tin sản phẩm">${brandInfo.des_prod}</textarea>
-                //                         </div>
-                //                         <div class="modal-footer mt-4">
-                //                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                //                             <button type="submit" class="btn btn-primary">Save changes</button>
-                //                         </div>
-                //                     </form>
-                //                     `;
-                //                 $("#formEdit").html(formEdit);
-                //             } else {
-                //                 alert(rs.msg);
-                //             }
-                //         },
-                //     });
-                // }
-
                 // delete Item brand
-                function deleteItem(productId) {
+                function deleteItem(brandId) {
                     $.ajax({
                         type: "DELETE",
-                        url: `/product/delete/${productId}`,
+                        url: `/brand/delete/${brandId}`,
                         success: function (rs) {
                             console.log(rs);
                             if (rs.s === 200) {
@@ -335,6 +258,31 @@
                         },
                     });
                 }
+
+                // add Img brand
+                $('#btnUploadImg').on('click', function () {
+                    var myformData = new FormData();
+                    myformData.append('file', $('#img')[0].files[0]);
+                    console.log(myformData);
+                    $.ajax({
+                        url: '/upload-image',
+                        type: 'POST',
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        data: myformData,
+                        enctype: 'multipart/form-data',
+                        success: function (rs) {
+                            if (rs.s === 200) {
+                                $("#imgAdd").attr("src", rs.url);
+                                $("#img_brand").val(rs.url)
+                                console.log(rs.url);
+                            } else {
+                                alert(rs.msg);
+                            }
+                        },
+                    });
+                });
 
                 // add Img Product
                 $('#btnUploadImg').on('click', function () {
@@ -386,8 +334,8 @@
                     });
                 });
 
-                // next page - prev page
 
+                // next page - prev page
 
             </script>
 

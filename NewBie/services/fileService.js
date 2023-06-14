@@ -1,7 +1,9 @@
 "use strict";
 const firebase = require("./firebaseService");
-const producController = require("../controllers/producController");
-const product = require("../models/product");
+const ProducController = require("../controllers/productController");
+const Product = require("../models/product");
+const BrandController = require("../controllers/brandController");
+const Brand = require("../models/brand");
 
 function FileService() {
   const SELF = {};

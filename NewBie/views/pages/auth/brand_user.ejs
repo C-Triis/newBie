@@ -33,14 +33,14 @@
 
             <div class="container mt-4">
                 <div class="row">
-                    <% product.forEach(function(product) { %>
+                    <% brand.forEach(function(brand) { %>
                         <div class="col col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
-                            <div class="product">
-                                <div class="img_pro">
+                            <div class="brand">
+                                <div class="img_pro">   
                                     <a href="#">
                                         <span class="sale">8% Off</span>
                                         <span class="sale_01">Sale</span>
-                                        <img src="<%= product.img_prod %>"
+                                        <img src="<%= brand.img_brand %>"
                                             alt="" class="img-represent">
                                         <span class="icon_pro_left">
                                             <i class="fa-solid fa-heart"></i>
@@ -50,7 +50,7 @@
                                             <i class="fa-sharp fa-solid fa-bars-staggered"></i>
                                             <i class="fa-solid fa-cart-shopping"></i>
                                         </span>
-                                        <img src="<%= product.img_prod %>"
+                                        <img src="<%= brand.img_brand %>"
                                             alt="" class="img_hover">
                                     </a>
                                 </div>
@@ -64,8 +64,8 @@
                                     </div>
                                     <div class="name_pro">
                                         <a href="#">
-                                            <h4> <%= product.brandName %> </h4>
-                                            <p class="price"><%= product.price_prod %></p>
+                                            <h4> <%= brand.brandName %> </h4>
+                                            <p class="price"><%= brand.name_brand %></p>
                                         </a>
                                     </div>
                                 </div>

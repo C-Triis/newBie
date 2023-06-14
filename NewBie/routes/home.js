@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router({});
-const ProductController = require('../controllers/producController.js');
+const ProductController = require('../controllers/productController.js');
 // const UserController = require('../controllers/userController.js');
 const multer = require("multer");
 const fileService = require('../services/fileService.js');
@@ -17,7 +17,7 @@ const upload = multer({
 router.post("/upload-image", upload.single("file"), fileService.uploadFile);
 // router.delete("/product/delete/:id", ProductController.DeleteProduct)
 
-router.get("/", (req, res) => {
+router.get("/home", (req, res) => {
   ProductController.getList().then(rs =>{
       res.render("pages/auth/home_user", {
           product: rs,
