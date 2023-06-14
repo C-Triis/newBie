@@ -9,7 +9,6 @@ const Product = mongoose.Schema(
         price_prod: { type: String },
         percent_prod: { type: String},
         des_prod: { type: String },
-        brandId: { type: Number},
         brandName: { type: String},
     },
     {versionKey: false, timestamps: true}

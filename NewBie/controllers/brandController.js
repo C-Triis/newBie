@@ -21,6 +21,14 @@ function BrandController() {
             console.log(error);
           }
           },
+          getListBrand:()=>{
+            return Brand.find().lean().then((brandList)=>{
+              console.log(brandList);
+              return Promise.resolve(brandList);
+            }).catch(error=>{
+              console.log(error);
+            })
+          },
           addBrand: (req, res) => {
             try {
               let data = req.body;
@@ -107,7 +115,13 @@ function BrandController() {
               console.log(error);
             }
           },
-          
+          getBrandById: (brandId) => {
+            return Brand.findById(brandId).then(rs => {
+              return Promise.resolve(rs)
+            }).catch(e => {
+              console.log(e)
+            })
+          }
     }
 }
 

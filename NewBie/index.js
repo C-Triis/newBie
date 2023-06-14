@@ -6,6 +6,7 @@ const home = require('./routes/home.js')
 const product = require('./routes/product.js')
 const account = require('./routes/account.js')
 const brand = require('./routes/brands.js')
+const acces = require('./routes/access.js')
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
@@ -23,7 +24,7 @@ app.use('/', home)
 app.use('/product', product)
 app.use('/account', account)
 app.use('/brand', brand)
-
+app.use('/acces', acces)
 
 
 //Kiểm tra mongoodb được kết nối chưa
