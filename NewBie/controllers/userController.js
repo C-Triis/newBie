@@ -50,7 +50,7 @@ function UserController() {
             .then(async (rs) => {
               if (rs) {
                 await localStorage.setItem("email", data?.email);
-                return res.redirect("/verifyUser");
+                return res.redirect("/account/verifyUser");
               }
             })
             .catch((e) => {
@@ -75,7 +75,7 @@ function UserController() {
               userInfo.active = true;
               userInfo.otp = "";
               await User.updateOne({ _id: userInfo._id }, userInfo);
-              res.redirect("/login");
+              res.redirect("account/login");
             } else {
               return res.json({ s: 400, msg: "OTP chua chinh xac" });
             }
@@ -134,7 +134,7 @@ function UserController() {
           .compare(data?.oldPassword, userInfo.password)
           .then( async (rs) => {
             if(rs) {
-              return res.redirect("/login");
+              return res.redirect("account/login");
             } else {
               res.json({ s: 400, msg: "Password khong chinh xac" });
             }

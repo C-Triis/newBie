@@ -23,7 +23,7 @@ function BrandController() {
           },
           getListBrand:()=>{
             return Brand.find().lean().then((brandList)=>{
-              console.log(brandList);
+              // console.log(brandList);
               return Promise.resolve(brandList);
             }).catch(error=>{
               console.log(error);

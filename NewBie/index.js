@@ -12,6 +12,7 @@ const bodyParser = require('body-parser');
 
 
 
+
 //app sử dụng 
 app.set('view engine', 'ejs');
 app.use('/public', express.static('public'));

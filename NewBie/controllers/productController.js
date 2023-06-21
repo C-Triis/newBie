@@ -19,13 +19,13 @@ function ProductController() {
               .limit(SELF.SIZE)
               .then(async (rs) => {
                 for(let i = 0, ii = rs.length; i < ii; i++) {
-                  let brandInfo = await BrandController.getBrandById(rs[i].brandName)
-                  rs[i].brandName = brandInfo.brandName
+                  let brandInfo = await  BrandController.getBrandById(rs[i].brandId)
+                  rs[i]['brandName'] = brandInfo.brandName;
                 }
-                console.log(rs)
                 return rs
               })
               .catch((error) => {
+                console.log(error);
               });
           } catch (error) {
             console.log(error);

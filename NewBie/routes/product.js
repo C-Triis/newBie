@@ -8,17 +8,16 @@ const BrandController = require('../controllers/brandController.js');
 // router.get('/list', ProductController.getList);
 router.get("/list", (req, res) => {
     let page = req.query.page;
-    let keySearch = req.query.keySearch;
+    let keySearch = req.query.keySearch ||"";
     if (!page || parseInt(page) <= 0) {
         page = 1;
     }
     ProductController.getList(page, keySearch).then(rs =>{
         BrandController.getListBrand().then((brandList)=>{
-            console.log(brandList);
+            // console.log(brandList);
             res.render("pages/admin/index", {
                 product: rs,
                 brand: brandList,
-                
             })
         })
     })

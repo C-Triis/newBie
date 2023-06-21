@@ -175,10 +175,10 @@
                                             placeholder="Nhập tên sản phẩm">
                                     </div>
                                     <div class="col-6">
-                                        <label for="brandName" class="form-label">Tên hãng</label>
+                                        <label for="brandId" class="form-label">Tên hãng</label>
                                         <!-- <input type="text" class="form-control ps-3" id="brandName" name="brandName"
                                             placeholder="Chọn tên hãng"> -->
-                                            <select class="form-control" name="brandName" id="brandName">
+                                            <select class="form-control" name="brandId" id="brandId">
                                                 <% for(var i=0; i <brand.length; i++) { %>
                                                     <option value="<%= brand[i]._id %>"><%= brand[i].brandName %></option>
                                                     <% }; %>
