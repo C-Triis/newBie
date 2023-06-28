@@ -4,7 +4,6 @@ const express = require('express');
 const router = express.Router({});
 const ProductController = require('../controllers/productController.js');
 const BrandController = require('../controllers/brandController.js');
-
 // router.get('/list', ProductController.getList);
 router.get("/list", (req, res) => {
     let page = req.query.page;
@@ -16,7 +15,7 @@ router.get("/list", (req, res) => {
         BrandController.getListBrand().then((brandList)=>{
             console.log(brandList);
             res.render("pages/admin/index", {
-                product: rs,
+                products: rs,
                 brand: brandList,
                 
             })

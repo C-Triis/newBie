@@ -4,10 +4,9 @@ const { error } = require('console');
 
 const Product = require('../models/product.js').Product
 const BrandController = require("../controllers/brandController.js")
-
 function ProductController() {
     const SELF = {
-      SIZE: 8,
+      SIZE: 16,
     };
     return{
         getList: (page, keySearch) => {
@@ -17,12 +16,12 @@ function ProductController() {
             return Product.find()
               .skip(skip)
               .limit(SELF.SIZE)
-              .then(async (rs) => {
-                for(let i = 0, ii = rs.length; i < ii; i++) {
-                  let brandInfo = await BrandController.getBrandById(rs[i].brandName)
-                  rs[i].brandName = brandInfo.brandName
+              .then( async (rs) => {
+                for(let i = 0, ii = rs.length; i < ii; i++) {//tạo vòng lặp dựa trên số lượng các sản phẩm
+                  let brandInfo = await BrandController.getBrandById(rs[i].brandId);//tạo brandInfo là
+                  rs[i]['brandName'] = brandInfo.brandName;
                 }
-                console.log(rs)
+                
                 return rs
               })
               .catch((error) => {

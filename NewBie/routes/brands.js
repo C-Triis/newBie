@@ -3,6 +3,7 @@
 const express = require('express');
 const router = express.Router({});
 const BrandController = require('../controllers/brandController.js');
+const ProductController = require('../controllers/productController.js');
 const multer = require("multer");
 const fileService = require('../services/fileService.js');
 const upload = multer({
@@ -18,9 +19,14 @@ router.get("/list", (req, res) => {
     })
   });
   router.get("/home", (req, res) => {
-    BrandController.getList().then(rs =>{
-        res.render("pages/auth/brand_user", {
-            brand: rs,
+    ProductController.getList().then(rs =>{
+        BrandController.getListBrand().then((brandList)=>{
+            console.log(brandList);
+            res.render("pages/auth/brand_user", {
+                product: rs,
+                brand: brandList,
+                
+            })
         })
     })
   });

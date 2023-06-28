@@ -1,8 +1,9 @@
 "use strict";
 const Brand = require('../models/brand.js').Brand
+const ProductController = require('../controllers/productController.js');
 function BrandController() {
     const SELF = {
-      SIZE: 5,
+      SIZE: 4,
     };
     return{
         getList: (page, keySearch) => {
@@ -23,7 +24,6 @@ function BrandController() {
           },
           getListBrand:()=>{
             return Brand.find().lean().then((brandList)=>{
-              console.log(brandList);
               return Promise.resolve(brandList);
             }).catch(error=>{
               console.log(error);
@@ -63,7 +63,7 @@ function BrandController() {
           getBrandDetail: async (req, res) => {
             try {
               let brandId = req.params?.id;
-              let brandInfo = await Product.findById(brandId);
+              let brandInfo = await Brand.findById(brandId);
               if (!brandInfo) {
                 return res.json({ s: 404, msg: "Brand not found" });
               }
@@ -119,9 +119,9 @@ function BrandController() {
             return Brand.findById(brandId).then(rs => {
               return Promise.resolve(rs)
             }).catch(e => {
-              console.log(e)
+              console.log(e);
             })
-          }
+          },
     }
 }
 

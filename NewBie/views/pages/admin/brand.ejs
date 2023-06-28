@@ -46,7 +46,6 @@
                                                 <td class="text-center align-middle">
                                                     <span onclick='editItem("<%= brand._id %>")' class="icon-cn"
                                                         data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                    </span>
                                                         <i class="fa-regular fa-pen-to-square"></i>
                                                     </span>
                                                 </td>
@@ -191,6 +190,7 @@
                         type: "GET",
                         url: `/brand/detail/${brandId}`,
                         success: function (rs) {
+                            console.log(brandId);
                             if (rs.s === 200) {
                                 let brandInfo = rs.data;
                                 var formEdit = ` 
@@ -200,34 +200,17 @@
                                         <input type="text" class="form-control" id="_id" name="_id" value="${brandInfo._id}" style="display:none">
                                         </div>
                                         <div class="col-md-6">
-                                                    <img id="oldUrl" height="100px" width="100px" src="${brandInfo.img_prod}" class="mt-2" />
-                                                    <input type="hidden" class="form-control" name="img_prod" id="oldImg" value='${brandInfo.img_prod}'>
-                                        </div>
-                                        <div class="col-md-6 mt-4">
-                                        <label for="name_prod" class="form-label">Tên sản phẩm</label>
-                                        <input type="text" class="form-control ps-3" id="name_prod" name="name_prod" placeholder="Nhập tên"
-                                            value="${brandInfo.name_prod}">
+                                            <img id="oldUrl" height="100px" width="100px" src="${brandInfo.img_brand}" class="mt-2" />
+                                            <input type="hidden" class="form-control" name="img_brand" id="oldImg" value='${brandInfo.img_brand}'>
                                         </div>
                                         <div class="col-md-6 mt-4">
                                         <label for="brandName" class="form-label">Tên hãng</label>
                                         <input type="text" class="form-control ps-3" id="brandName" name="brandName" placeholder="Nhập tên"
                                             value="${brandInfo.brandName}">
                                         </div>
-                                        <div class="col-md-6 mt-4 row">
-                                           <div class="col-md-6">
-                                            <label for="price_prod" class="form-label">Giá</label>
-                                            <input type="text" class="form-control ps-3" id="price_prod" name="price_prod" placeholder="Nhập Giá"
-                                                value="${brandInfo.price_prod}">
-                                            </div>
-                                            <div class="col-md-6">
-                                            <label for="percent_prod" class="form-label">Giảm</label>
-                                            <input type="text" class="form-control ps-3" id="percent_prod" name="percent_prod" placeholder="Nhập phần trăm giảm giá"
-                                                value="${brandInfo.percent_prod}">
-                                            </div>
-                                        </div>
                                         <div class="col-md-6 mt-4 ms-4">
-                                        <label for="des_prod" class="form-label">Thông tin sản phẩm</label>
-                                        <textarea type="text" class="form-control" id="des_prod" name="des_prod" placeholder="Thông tin sản phẩm">${brandInfo.des_prod}</textarea>
+                                        <label for="des_brand" class="form-label">Thông tin sản phẩm</label>
+                                        <textarea type="text" class="form-control" id="des_brand" name="des_brand" placeholder="Thông tin sản phẩm">${brandInfo.des_prod}</textarea>
                                         </div>
                                         <div class="modal-footer mt-4">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -285,29 +268,29 @@
                 });
 
                 // add Img Product
-                $('#btnUploadImg').on('click', function () {
-                    var myformData = new FormData();
-                    myformData.append('file', $('#img')[0].files[0]);
-                    console.log(myformData);
-                    $.ajax({
-                        url: '/upload-image',
-                        type: 'POST',
-                        processData: false,
-                        contentType: false,
-                        cache: false,
-                        data: myformData,
-                        enctype: 'multipart/form-data',
-                        success: function (rs) {
-                            if (rs.s === 200) {
-                                $("#imgAdd").attr("src", rs.url);
-                                $("#img_prod").val(rs.url)
-                                console.log(rs.url);
-                            } else {
-                                alert(rs.msg);
-                            }
-                        },
-                    });
-                });
+                // $('#btnUploadImg').on('click', function () {
+                //     var myformData = new FormData();
+                //     myformData.append('file', $('#img')[0].files[0]);
+                //     console.log(myformData);
+                //     $.ajax({
+                //         url: '/upload-image',
+                //         type: 'POST',
+                //         processData: false,
+                //         contentType: false,
+                //         cache: false,
+                //         data: myformData,
+                //         enctype: 'multipart/form-data',
+                //         success: function (rs) {
+                //             if (rs.s === 200) {
+                //                 $("#imgAdd").attr("src", rs.url);
+                //                 $("#img_brand").val(rs.url)
+                //                 console.log(rs.url);
+                //             } else {
+                //                 alert(rs.msg);
+                //             }
+                //         },
+                //     });
+                // });
 
                 // changeImage
                 $('#btnImgOld').on('click', function () {

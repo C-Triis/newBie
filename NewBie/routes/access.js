@@ -3,6 +3,8 @@
 const express = require('express');
 const router = express.Router({});
 const AccesController = require('../controllers/accesController.js');
+const BrandController = require('../controllers/brandController.js');
+
 const multer = require("multer");
 const fileService = require('../services/fileService.js');
 const upload = multer({
@@ -11,9 +13,13 @@ const upload = multer({
 
 router.get("/list", (req, res) => {
     AccesController.getList().then(rs =>{
-        res.render("pages/admin/acces", {
+      BrandController.getListBrand().then((brandList)=>{
+        res.render("pages/admin/index", {
             acces: rs,
+            brand: brandList,
+            
         })
+    })
     })
   });
   router.get("/home", (req, res) => {

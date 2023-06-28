@@ -34,9 +34,6 @@
                                                 <th scope="row" class="align-middle">
                                                     <%= index+1 %>
                                                 </th>
-                                                <!-- <td class="align-middle">
-                                                    <%= acces.name_prod %>
-                                                </td> -->
                                                 <td class="align-middle">
                                                     <%= acces.accesId %>
                                                 </td>
@@ -142,7 +139,7 @@
                     </div>
                 </div>
                 <!-- modal add Product -->
-                <div class="modal fade" id="addBrand" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="addAcces" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -163,9 +160,13 @@
                                         <input type="hidden" class="form-control" name="img_acces" id="img_acces">
                                     </div>
                                     <div class="col-6">
-                                        <label for="name_acces" class="form-label">Tên hãng</label>
-                                        <input type="text" class="form-control ps-3" id="accesName" name="accesName"
-                                            placeholder="Nhập tên hãng">
+                                        <label for="brandName" class="form-label">Tên hãng</label>
+                                        <select class="form-control" name="brandId" id="brandId">
+                                            <% for(var i=0; i < brand.length; i++) { %>
+                                                <option value="<%= brand[i]._id %>"><%= brand[i].brandName %></option>
+                                                <% }; %>
+                                            
+                                          </select>
                                     </div>
                                     <div class="col-6 ms-4">
                                             <label for="des_acces" class="form-label">Mô tả sản phẩm</label>

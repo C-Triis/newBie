@@ -75,6 +75,151 @@
                 </div>
 
             </div>
+            
+            <p class="p" style="color:black">Adidas</p>
+            <div class="container mt-4">
+                <div class="row">
+                    <% product.forEach(function(product) { %>
+                        <% if(product.brandName==='Adidas'){ %>
+                            <div class="col col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
+                                <div class="product mb-5">
+                                    <div class="img_pro">
+                                        <a href="#">
+                                            <span class="sale"><%= product.percent_prod %></span>
+                                            <span class="sale_01">Sale</span>
+                                            <img src="<%= product.img_prod %>"
+                                                alt="" class="img-represent">
+                                            <span class="icon_pro_left">
+                                                <i class="fa-solid fa-heart"></i>
+                                                <i class="fa-solid fa-eye"></i>
+                                            </span>
+                                            <span class="icon_pro_right">
+                                                <i class="fa-sharp fa-solid fa-bars-staggered"></i>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                            <img src="<%= product.img_prod %>"
+                                                alt="" class="img_hover">
+                                        </a>
+                                    </div>
+                                    <div class="reviwes_pro">
+                                        <div class="star">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                        </div>
+                                        <div class="name_pro">
+                                            <a href="#">
+                                                <h4> <%= product.name_prod %> </h4>
+                                                <p class="price">Hãng: <%= product.brandName %></p>
+                                                <p class="price"><%= product.price_prod %></p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                        <% }) %>
+                </div>
+
+            </div>
+            <p class="p" style="color:black">Converse</p>
+            <div class="container mt-4">
+                <div class="row">
+                    <% product.forEach(function(product) { %>
+                        <% if(product.brandName==='Converse'){ %>
+                            <div class="col col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
+                                <div class="product mb-5">
+                                    <div class="img_pro">
+                                        <a href="#">
+                                            <span class="sale"><%= product.percent_prod %></span>
+                                            <span class="sale_01">Sale</span>
+                                            <img src="<%= product.img_prod %>"
+                                                alt="" class="img-represent">
+                                            <span class="icon_pro_left">
+                                                <i class="fa-solid fa-heart"></i>
+                                                <i class="fa-solid fa-eye"></i>
+                                            </span>
+                                            <span class="icon_pro_right">
+                                                <i class="fa-sharp fa-solid fa-bars-staggered"></i>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                            <img src="<%= product.img_prod %>"
+                                                alt="" class="img_hover">
+                                        </a>
+                                    </div>
+                                    <div class="reviwes_pro">
+                                        <div class="star">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                        </div>
+                                        <div class="name_pro">
+                                            <a href="#">
+                                                <h4> <%= product.name_prod %> </h4>
+                                                <p class="price">Hãng: <%= product.brandName %></p>
+                                                <p class="price"><%= product.price_prod %></p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                        <% }) %>
+                </div>
+
+            </div>
+            <p class="p" style="color:black">Gucci</p>
+            <div class="container mt-4">
+                <div class="row">
+                    <% product.forEach(function(product) { %>
+                        <% if(product.brandName==='Gucci'){ %>
+                            <div class="col col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
+                                <div class="product mb-5">
+                                    <div class="img_pro">
+                                        <a href="#">
+                                            <span class="sale"><%= product.percent_prod %></span>
+                                            <span class="sale_01">Sale</span>
+                                            <img src="<%= product.img_prod %>"
+                                                alt="" class="img-represent">
+                                            <span class="icon_pro_left">
+                                                <i class="fa-solid fa-heart"></i>
+                                                <i class="fa-solid fa-eye"></i>
+                                            </span>
+                                            <span class="icon_pro_right">
+                                                <i class="fa-sharp fa-solid fa-bars-staggered"></i>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                            <img src="<%= product.img_prod %>"
+                                                alt="" class="img_hover">
+                                        </a>
+                                    </div>
+                                    <div class="reviwes_pro">
+                                        <div class="star">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                        </div>
+                                        <div class="name_pro">
+                                            <a href="#">
+                                                <h4> <%= product.name_prod %> </h4>
+                                                <p class="price">Hãng: <%= product.brandName %></p>
+                                                <p class="price"><%= product.price_prod %></p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                        <% }) %>
+                </div>
+
+            </div>
             <!-- banner sale -->
             
 

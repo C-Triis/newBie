@@ -31,7 +31,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <% product.forEach(function(product, index) { %>
+                                        <% products.forEach(function (product, index) { %>
                                             <tr>
                                                 <th scope="row" class="align-middle">
                                                     <%= index+1 %>
@@ -175,11 +175,9 @@
                                             placeholder="Nhập tên sản phẩm">
                                     </div>
                                     <div class="col-6">
-                                        <label for="brandName" class="form-label">Tên hãng</label>
-                                        <!-- <input type="text" class="form-control ps-3" id="brandName" name="brandName"
-                                            placeholder="Chọn tên hãng"> -->
-                                            <select class="form-control" name="brandName" id="brandName">
-                                                <% for(var i=0; i <brand.length; i++) { %>
+                                        <label for="brandId" class="form-label">Tên hãng</label>
+                                            <select class="form-control" name="brandId" id="brandId">
+                                                <% for(var i=0; i < brand.length; i++) { %>
                                                     <option value="<%= brand[i]._id %>"><%= brand[i].brandName %></option>
                                                     <% }; %>
                                                 
@@ -239,9 +237,17 @@
                                             value="${productInfo.name_prod}">
                                         </div>
                                         <div class="col-md-6 mt-4">
-                                        <label for="brandName" class="form-label">Tên hãng</label>
-                                        <input type="text" class="form-control ps-3" id="brandName" name="brandName" placeholder="Nhập tên"
-                                            value="${productInfo.brandName}">
+                                        <label for="brandId" class="form-label">Tên hãng</label>
+                                        <select class="form-control" name="brandId" id="brandId">
+                                                <% for(var i=0; i < brand.length; i++) { %>
+                                                    
+                                                    if(brand[i]._id===#brandId)
+                                                    {
+                                                        <option value="<%= brand[i]._id %>"><%= brand[i].brandName %></option>
+
+                                                    }
+                                                    <% }; %>
+                                              </select>
                                         </div>
                                         <div class="col-md-6 mt-4 row">
                                            <div class="col-md-6">
@@ -274,51 +280,7 @@
                 }
 
                 //edit Item Brand
-                // function editItem(brandId) {
-                //     $.ajax({
-                //         type: "GET",
-                //         url: `/brand/detail/${brandId}`,
-                //         success: function (rs) {
-                //             console.log(brandId);
-                //             if (rs.s === 200) {
-                //                 let brandInfo = rs.data;
-                //                 var formEdit = ` 
-                    
-                //                     <form class="row" action="/brand/edit" method="post">
-                //                         <div>
-                //                         <input type="text" class="form-control" id="_id" name="_id" value="${brandInfo._id}" style="display:none">
-                //                         </div>
-                //                         <div class="col-md-6">
-                //                             <img id="oldUrl" height="100px" width="100px" src="${brandInfo.img_brand}" class="mt-2" />
-                //                             <input type="hidden" class="form-control" name="img_brand" id="oldImg" value='${brandInfo.img_brand}'>
-                //                         </div>
-                //                         <div class="col-md-6 mt-4">
-                //                         <label for="name_brand" class="form-label">Tên sản phẩm</label>
-                //                         <input type="text" class="form-control ps-3" id="name_brand" name="name_brand" placeholder="Nhập tên"
-                //                             value="${brandInfo.name_brand}">
-                //                         </div>
-                //                         <div class="col-md-6 mt-4">
-                //                         <label for="brandName" class="form-label">Tên hãng</label>
-                //                         <input type="text" class="form-control ps-3" id="brandName" name="brandName" placeholder="Nhập tên"
-                //                             value="${brandInfo.brandName}">
-                //                         </div>
-                //                         <div class="col-md-6 mt-4 ms-4">
-                //                         <label for="des_brand" class="form-label">Thông tin sản phẩm</label>
-                //                         <textarea type="text" class="form-control" id="des_brand" name="des_brand" placeholder="Thông tin sản phẩm">${brandInfo.des_prod}</textarea>
-                //                         </div>
-                //                         <div class="modal-footer mt-4">
-                //                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                //                             <button type="submit" class="btn btn-primary">Save changes</button>
-                //                         </div>
-                //                     </form>
-                //                     `;
-                //                 $("#formEdit").html(formEdit);
-                //             } else {
-                //                 alert(rs.msg);
-                //             }
-                //         },
-                //     });
-                // }
+                
 
                 // delete Item brand
                 function deleteItem(productId) {
