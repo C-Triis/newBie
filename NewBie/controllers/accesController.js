@@ -1,6 +1,6 @@
 "use strict";
 const Acces = require('../models/acces.js').Acces
-const BrandController = require("../controllers/brandController.js")
+const ProductController = require('../controllers/productController.js');
 function AccesController() {
     const SELF = {
       SIZE: 5,
@@ -13,11 +13,7 @@ function AccesController() {
             return Acces.find()
               .skip(skip)
               .limit(SELF.SIZE)
-              .then( async (rs) => {
-                for(let i = 0, ii = rs.length; i < ii; i++) {//tạo vòng lặp dựa trên số lượng các sản phẩm
-                  let brandInfo = await BrandController.getBrandById(rs[i].brandId);//tạo brandInfo là
-                  rs[i]['brandName'] = brandInfo.brandName;
-                }
+              .then((rs) => {
                 return rs
               })
               .catch((error) => {
@@ -25,6 +21,13 @@ function AccesController() {
           } catch (error) {
             console.log(error);
           }
+          },
+          getListAcces:()=>{
+            return Acces.find().lean().then((accesList)=>{
+              return Promise.resolve(accesList);
+            }).catch(error=>{
+              console.log(error);
+            })
           },
           addAcces: (req, res) => {
             try {
@@ -112,7 +115,13 @@ function AccesController() {
               console.log(error);
             }
           },
-          
+          getAccesById: (accesId) => {
+            return Acces.findById(accesId).then(rs => {
+              return Promise.resolve(rs)
+            }).catch(e => {
+              console.log(e);
+            })
+          },
     }
 }
 

@@ -3,7 +3,9 @@
 const { error } = require('console');
 
 const Product = require('../models/product.js').Product
-const BrandController = require("../controllers/brandController.js")
+const BrandController = require("../controllers/brandController.js");
+const AccesController = require('../controllers/accesController.js');
+
 function ProductController() {
     const SELF = {
       SIZE: 16,
@@ -20,9 +22,12 @@ function ProductController() {
                 for(let i = 0, ii = rs.length; i < ii; i++) {//tạo vòng lặp dựa trên số lượng các sản phẩm
                   let brandInfo = await BrandController.getBrandById(rs[i].brandId);//tạo brandInfo là
                   rs[i]['brandName'] = brandInfo.brandName;
-                }
-                
-                return rs
+                };
+                for(let i = 0, ii = rs.length; i < ii; i++) {//tạo vòng lặp dựa trên số lượng các sản phẩm
+                  let accesInfo = await AccesController.getAccesById(rs[i].accesId);//tạo accesInfo là
+                  rs[i]['accesName'] = accesInfo.accesName;
+                };
+                return rs;
               })
               .catch((error) => {
               });

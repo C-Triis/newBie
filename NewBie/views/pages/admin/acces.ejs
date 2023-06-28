@@ -160,10 +160,10 @@
                                         <input type="hidden" class="form-control" name="img_acces" id="img_acces">
                                     </div>
                                     <div class="col-6">
-                                        <label for="brandName" class="form-label">Tên hãng</label>
-                                        <select class="form-control" name="brandId" id="brandId">
-                                            <% for(var i=0; i < brand.length; i++) { %>
-                                                <option value="<%= brand[i]._id %>"><%= brand[i].brandName %></option>
+                                        <label for="accesName" class="form-label">Tên hãng</label>
+                                        <select class="form-control" name="accesId" id="accesId">
+                                            <% for(var i=0; i < acces.length; i++) { %>
+                                                <option value="<%= acces[i]._id %>"><%= acces[i].accesName %></option>
                                                 <% }; %>
                                             
                                           </select>

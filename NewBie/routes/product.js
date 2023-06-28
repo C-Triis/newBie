@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router({});
 const ProductController = require('../controllers/productController.js');
 const BrandController = require('../controllers/brandController.js');
+const AccesController = require('../controllers/accesController.js');
 // router.get('/list', ProductController.getList);
 router.get("/list", (req, res) => {
     let page = req.query.page;
@@ -13,13 +14,15 @@ router.get("/list", (req, res) => {
     }
     ProductController.getList(page, keySearch).then(rs =>{
         BrandController.getListBrand().then((brandList)=>{
-            console.log(brandList);
-            res.render("pages/admin/index", {
-                products: rs,
-                brand: brandList,
-                
-            })
-        })
+           AccesController.getListAcces().then((accesList)=>{
+                res.render("pages/admin/index", {
+                    products: rs,
+                    brand: brandList,
+                    acces: accesList
+                })
+            });
+        });
+        
     })
 });
 

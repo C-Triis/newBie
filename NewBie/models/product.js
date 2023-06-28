@@ -10,6 +10,7 @@ const Product = mongoose.Schema(
         percent_prod: { type: String},
         des_prod: { type: String },
         brandId: { type: String},
+        accesId: { type: String},
     },
     {versionKey: false, timestamps: true}
 );

@@ -3,32 +3,31 @@
 const express = require('express');
 const router = express.Router({});
 const AccesController = require('../controllers/accesController.js');
-const BrandController = require('../controllers/brandController.js');
-
+const ProductController = require('../controllers/productController.js');
 const multer = require("multer");
 const fileService = require('../services/fileService.js');
 const upload = multer({
   storage: multer.memoryStorage(),
 });
 
+router.get("/home", (req, res) => {
+  ProductController.getList().then(rs =>{
+    AccesController.getListAcces().then((accesList)=>{
+          res.render("pages/auth/acces_user", {
+              product: rs,
+              acces: accesList,
+              
+          })
+      })
+  })
+});
 router.get("/list", (req, res) => {
-    AccesController.getList().then(rs =>{
-      BrandController.getListBrand().then((brandList)=>{
-        res.render("pages/admin/index", {
-            acces: rs,
-            brand: brandList,
-            
-        })
-    })
-    })
-  });
-  router.get("/home", (req, res) => {
-    AccesController.getList().then(rs =>{
-        res.render("pages/auth/acces_user", {
-            acces: rs,
-        })
-    })
-  });
+  AccesController.getList().then(rs =>{
+      res.render("pages/admin/acces", {
+          acces: rs,
+      })
+  })
+});
 
 router.post("/add", AccesController.addAcces);
 router.get("/detail/:id", AccesController.getAccesDetail);
